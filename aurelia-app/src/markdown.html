@@ -1,0 +1,16 @@
+<template>
+  <require from="./style.css"></require>
+  <h1>Aurelia Markdown Redux - undo/redo</h1>
+
+  <div class="toolbar">
+      <button click.trigger="undo()">(${pastCount} Undo)</button>
+      <button click.trigger="redo()">Redo (${futureCount})</button>
+  </div>
+  <div class="markdown-editor cf">
+      <textarea class="editor"
+                keyup.trigger="keyupHandler($event.target.value) & debounce"
+                value.one-way="raw"></textarea>
+      <div class="preview" innerHTML.bind="html"></div>
+  </div>
+  
+</template>
